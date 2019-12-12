@@ -1,5 +1,7 @@
 import tkinter as tk 
 from tkinter import *
+import matplotlib.pyplot as plt
+import numpy as np
 
 # creating main tkinter window/toplevel 
 master = tk.Tk()
@@ -7,10 +9,18 @@ master.geometry("180x180+700+300")
 
 #Func calling next window with details
 def GetDetails(city):
-    newwin = tk.Toplevel(master)
-    newwin.geometry("250x250+700+500")
-    l1 = Label(newwin, text=city)
-    l1.pack()
+    #newwin = tk.Toplevel(master)
+    #newwin.geometry("250x250+700+500")
+    #l1 = Label(newwin, text=city)
+    #l1.pack()
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1,1])
+    days = ['Mon', 'Tue', 'Wed', 'Thurs', 'Fri','Sat','Sun']
+    values = [23,17,35,29,12,25,19]
+    ax.bar(days,values)
+    ax.set_xlabel('Day')
+    ax.set_ylabel('AQI Level')
+    plt.show()
 
 
 # this wil create a label widget 

@@ -1,8 +1,8 @@
 import tkinter as tk 
 from tkinter import *
+from tkinter import messagebox
 import matplotlib.pyplot as plt
 import numpy as np
-
 
 
 #Func calling next window with details
@@ -27,6 +27,11 @@ def GetDetails(cityValue):
 # creating main tkinter window/toplevel 
 master = tk.Tk()
 master.geometry("180x460+800+300")
+
+
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        master.destroy()
 
 # this wil create a label widget 
 l1 = Label(master, text = "Delhi") 
@@ -62,7 +67,7 @@ l13.grid(row = 12, column = 0, sticky = W, pady = 2)
 l14.grid(row = 13, column = 0, sticky = W, pady = 2)
 l15.grid(row = 14, column = 0, sticky = W, pady = 2)
 DelhiValue = [257,284,220,174,174,189,179,174,174,260,370,165]
-AhmedaBadValue = []
+AhmedaBadValue = [257,284,220,174,174,189,179,174,174,260,370,165]
 BengaluruValue = []
 PuneValue = []
 ChennaiValue = []
@@ -110,5 +115,5 @@ b12.grid(row = 11, column = 1, sticky = W, pady = 2)
 b13.grid(row = 12, column = 1, sticky = W, pady = 2)
 b14.grid(row = 13, column = 1, sticky = W, pady = 2)
 b15.grid(row = 14, column = 1, sticky = W, pady = 2)
-
-mainloop()
+master.protocol("WM_DELETE_WINDOW", on_closing)
+master.mainloop()
